@@ -335,3 +335,15 @@ WHERE fk.referenced_column_name is not null
   AND fk.table_name = 'restaurantes'
 
   [1m[36m (0.5ms)[0m  [1mSHOW CREATE TABLE `restaurantes`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.9ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'restaurantes'
+[0m
+  [1m[35m (0.4ms)[0m  SHOW CREATE TABLE `restaurantes`
