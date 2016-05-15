@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514100327) do
+ActiveRecord::Schema.define(version: 20160515035406) do
+
+  create_table "pratos", force: :cascade do |t|
+    t.string   "nome",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "pratos", ["nome"], name: "index_pratos_on_nome", unique: true, using: :btree
+
+  create_table "receitas", force: :cascade do |t|
+    t.text     "conteudo",   limit: 65535, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "restaurantes", force: :cascade do |t|
     t.string   "nome",          limit: 255

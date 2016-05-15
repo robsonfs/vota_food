@@ -347,3 +347,153 @@ WHERE fk.referenced_column_name is not null
   AND fk.table_name = 'restaurantes'
 [0m
   [1m[35m (0.4ms)[0m  SHOW CREATE TABLE `restaurantes`
+  [1m[36mActiveRecord::SchemaMigration Load (58.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateReceitas (20160515034559)
+  [1m[35m (348.1ms)[0m  CREATE TABLE `receitas` (`id` int(11) auto_increment PRIMARY KEY, `conteudo` text NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (25.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160515034559')
+  [1m[36m (63.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePratos (20160515035406)
+  [1m[35m (308.6ms)[0m  CREATE TABLE `pratos` (`id` int(11) auto_increment PRIMARY KEY, `nome` varchar(255) NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160515035406')
+  [1m[36m (83.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (32.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'pratos'
+[0m
+  [1m[35m (0.5ms)[0m  SHOW CREATE TABLE `pratos`
+  [1m[36m (0.8ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'receitas'
+[0m
+  [1m[35m (0.4ms)[0m  SHOW CREATE TABLE `receitas`
+  [1m[36m (0.8ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'restaurantes'
+[0m
+  [1m[35m (1.2ms)[0m  SHOW CREATE TABLE `restaurantes`
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mPrato Exists (0.6ms)[0m  SELECT  1 AS one FROM `pratos` WHERE `pratos`.`nome` IS NULL LIMIT 1
+  [1m[36mPrato Exists (19.4ms)[0m  [1mSELECT  1 AS one FROM `pratos` WHERE `pratos`.`nome` = BINARY 'Tropeiro' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPrato Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM `pratos` WHERE `pratos`.`nome` = BINARY 'Tropeiro' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `pratos` (`nome`, `created_at`, `updated_at`) VALUES ('Tropeiro', '2016-05-15 04:23:03', '2016-05-15 04:23:03')
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPrato Exists (17.0ms)[0m  SELECT  1 AS one FROM `pratos` WHERE (`pratos`.`nome` = BINARY 'Tropeiro' AND `pratos`.`id` != 1) LIMIT 1
+  [1m[36mPrato Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM `pratos` WHERE `pratos`.`nome` = BINARY 'Tropeiro' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPrato Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM `pratos` WHERE `pratos`.`nome` = BINARY 'Tropeiro' LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (48.5ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.0ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (4.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'pratos'
+[0m
+  [1m[35m (0.5ms)[0m  SHOW CREATE TABLE `pratos`
+  [1m[36m (0.8ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'receitas'
+[0m
+  [1m[35m (0.4ms)[0m  SHOW CREATE TABLE `receitas`
+  [1m[36m (4.6ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'restaurantes'
+[0m
+  [1m[35m (0.4ms)[0m  SHOW CREATE TABLE `restaurantes`
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreatePratos (20160515035406)
+  [1m[36m (195.4ms)[0m  [1mDROP TABLE `pratos`[0m
+  [1m[35mSQL (49.3ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160515035406'
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.9ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'receitas'
+
+  [1m[36m (0.4ms)[0m  [1mSHOW CREATE TABLE `receitas`[0m
+  [1m[35m (0.8ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'restaurantes'
+
+  [1m[36m (0.4ms)[0m  [1mSHOW CREATE TABLE `restaurantes`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreatePratos (20160515035406)
+  [1m[35m (387.4ms)[0m  CREATE TABLE `pratos` (`id` int(11) auto_increment PRIMARY KEY, `nome` varchar(255) NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, UNIQUE INDEX `index_pratos_on_nome`  (`nome`) ) ENGINE=InnoDB
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160515035406')
+  [1m[36m (78.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.8ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.8ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'pratos'
+[0m
+  [1m[35m (0.4ms)[0m  SHOW CREATE TABLE `pratos`
+  [1m[36m (3.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'receitas'
+[0m
+  [1m[35m (0.5ms)[0m  SHOW CREATE TABLE `receitas`
+  [1m[36m (6.9ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'vota_food_development'
+  AND fk.table_name = 'restaurantes'
+[0m
+  [1m[35m (0.5ms)[0m  SHOW CREATE TABLE `restaurantes`
