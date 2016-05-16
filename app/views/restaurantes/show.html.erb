@@ -12,3 +12,4 @@
     <%= @restaurante.especialidade %>
 </p>
 <%= link_to "Voltar", restaurantes_path %>
+<%= link_to "Deletar", {action: "destroy", id: @restaurante}, {method: "delete"}%>
