@@ -23,8 +23,11 @@ class RestaurantesController < ApplicationController
         puts params[:restaurante][:especialidade]
 
         @restaurante = Restaurante.new restaurante_params
-        @restaurante.save
-        redirect_to(action: "show", id: @restaurante)
+        if @restaurante.save
+            redirect_to(action: "show", id: @restaurante)
+        else
+            render action: "new"
+        end
     end
 
     def edit
@@ -37,7 +40,6 @@ class RestaurantesController < ApplicationController
         @restaurante.save
         redirect_to(action: "show", id: @restaurante)
     end
-
 
     def restaurante_params
         params.require(:restaurante).permit(:nome, :endereco, :especialidade)
