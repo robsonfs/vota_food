@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pratos
   resources :qualificacoes
   resources :clientes
     resources :comentarios
