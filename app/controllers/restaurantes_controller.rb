@@ -1,6 +1,11 @@
 class RestaurantesController < ApplicationController
     def index
         @restaurantes = Restaurante.order :nome
+        respond_to do |format|
+            format.html { render "index" }
+            format.json { render json: @restaurantes }
+            format.xml { render xml: @restaurantes}
+        end
     end
 
     def show
@@ -45,7 +50,9 @@ class RestaurantesController < ApplicationController
     end
 
     def restaurante_params
-        params.require(:restaurante).permit(:nome, :endereco, :especialidade)
+        params.require(:restaurante).permit(
+            :nome, :endereco, :especialidade, :chef
+        )
     end
 
 end
