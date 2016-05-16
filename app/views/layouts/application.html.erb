@@ -38,7 +38,7 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
+    <!-- <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
@@ -54,7 +54,17 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <%= nav_bar static: :top, brand: "VotaFood" do %>
+        <%= menu_group do %>
+            <%= menu_item "Home", root_path %>
+            <%= menu_item "Restaurantes", restaurantes_path %>
+            <%= menu_item "Clientes", clientes_path %>
+            <%= menu_item "Qualificações", qualificacoes_path %>
+            <%= menu_item "Pratos", pratos_path %>
+        <% end %>
+    <% end %>
 
     <div class="container">
       <div class="row">
