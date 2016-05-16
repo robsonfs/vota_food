@@ -19,7 +19,6 @@ class RestaurantesController < ApplicationController
             format.js { head :ok }
             @restaurante.destroy
         end
-        # redirect_to action: "index"
     end
 
     def new
