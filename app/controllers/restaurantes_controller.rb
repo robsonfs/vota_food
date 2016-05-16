@@ -15,8 +15,6 @@ class RestaurantesController < ApplicationController
 
     def new
         @restaurante = Restaurante.new
-        @restaurante.nome = "McDonalds"
-        @restaurante.especialidade = "Delicias cancerígenas"
     end
 
     def create
@@ -28,6 +26,18 @@ class RestaurantesController < ApplicationController
         @restaurante.save
         redirect_to(action: "show", id: @restaurante)
     end
+
+    def edit
+        @restaurante = Restaurante.find(params[:id])
+    end
+
+    def update
+        @restaurante = Restaurante.find(params[:id])
+        @restaurante.update_attributes(restaurante_params)
+        @restaurante.save
+        redirect_to(action: "show", id: @restaurante)
+    end
+
 
     def restaurante_params
         params.require(:restaurante).permit(:nome, :endereco, :especialidade)

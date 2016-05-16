@@ -17,6 +17,7 @@
         <td><%= restaurante.especialidade %></td>
         <td><%= link_to "Detalhes", restaurante_path(restaurante) %></td>
         <td><%= link_to "Deletar", {action: "destroy", id: restaurante}, {method: "delete"}%></td>
+        <td><%= link_to "Editar", edit_restaurante_path(restaurante)%></td>
     </tr>
     <% end %>
 </table>
