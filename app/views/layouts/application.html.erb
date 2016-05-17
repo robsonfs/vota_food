@@ -64,6 +64,17 @@
             <%= menu_item "Qualificações", qualificacoes_path %>
             <%= menu_item "Pratos", pratos_path %>
         <% end %>
+        <% if current_usuario %>
+            <%= menu_group pull: :right do %>
+                <%= menu_item "Logout", destroy_usuario_session_path,
+                :method => :delete %>
+            <% end %>
+        <% else %>
+            <%= menu_group pull: :right do %>
+                <%= menu_item "Cadastre-se", new_usuario_registration_path %>
+                <%= menu_item "Login", new_usuario_session_path %>
+            <% end %>
+        <% end %>
     <% end %>
 
     <div class="container">
