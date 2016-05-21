@@ -1,0 +1,41 @@
+<%= form_for @receita, :html => { :class => "form-horizontal receita" } do |f| %>
+
+  <% if @receita.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@receita.errors.count, "error") %> prohibited this receita from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @receita.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :conteudo, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conteudo, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conteudo) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :prato_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :prato_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:prato_id) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                receitas_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
