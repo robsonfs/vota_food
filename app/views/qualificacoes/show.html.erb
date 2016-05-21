@@ -9,9 +9,9 @@
   <dt><strong><%= model_class.human_attribute_name(:valor_gasto) %>:</strong></dt>
   <dd><%= @qualificacao.valor_gasto %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
-  <dd><%= @qualificacao.cliente_id %></dd>
+  <dd><%= @qualificacao.cliente.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:restaurante_id) %>:</strong></dt>
-  <dd><%= @qualificacao.restaurante_id %></dd>
+  <dd><%= @qualificacao.restaurante.nome %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

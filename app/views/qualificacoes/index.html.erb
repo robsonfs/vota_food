@@ -20,8 +20,8 @@
         <td><%= link_to qualificacao.id, qualificacao_path(qualificacao) %></td>
         <td><%= qualificacao.nota %></td>
         <td><%= qualificacao.valor_gasto %></td>
-        <td><%= qualificacao.cliente_id %></td>
-        <td><%= qualificacao.restaurante_id %></td>
+        <td><%= qualificacao.cliente.nome %></td>
+        <td><%= qualificacao.restaurante.nome %></td>
         <td><%=l qualificacao.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
