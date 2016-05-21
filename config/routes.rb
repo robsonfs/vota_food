@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :receitas
   devise_for :usuarios
   resources :pratos
   resources :qualificacoes
