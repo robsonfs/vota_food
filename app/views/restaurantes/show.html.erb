@@ -25,10 +25,13 @@
               :class => 'btn btn-danger' %>
 
 
+<% if current_usuario %>
+  <%= novo_comentario @restaurante %>
 
-<%= novo_comentario @restaurante %>
+
 <h1>Comentários</h1>
 
 <div id="comentarios">
   <%= render @restaurante.comentarios %>
 </div>
+<% end %>

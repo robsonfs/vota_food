@@ -24,7 +24,11 @@ class ComentariosController < ApplicationController
   # POST /comentarios
   # POST /comentarios.json
   def create
-    @comentario = Comentario.new(comentario_params)
+    if current_usuario
+      @comentario = Comentario.new(comentario_params)
+    else
+      :authenticate_usuario!
+    end
 
     respond_to do |format|
       if @comentario.save
