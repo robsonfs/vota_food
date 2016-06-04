@@ -7,6 +7,7 @@ class Restaurante < ActiveRecord::Base
     # Associations
     has_many :qualificacoes
     has_and_belongs_to_many :pratos
+    has_many :comentarios, as: :comentavel
 
     private
     def primeira_letra_deve_ser_maiuscula

@@ -229,6 +229,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  i18n
   jbuilder (~> 2.0)
   jquery-rails
   launchy

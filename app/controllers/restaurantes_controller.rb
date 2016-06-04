@@ -31,11 +31,15 @@ class RestaurantesController < ApplicationController
         puts params[:restaurante][:especialidade]
 
         @restaurante = Restaurante.new restaurante_params
-        if @restaurante.save
-            redirect_to(action: "show", id: @restaurante)
-        else
-            render action: "new"
-        end
+        respond_to do |format|
+          if @restaurante.save
+            format.html { redirect_to @restaurante, notice: 'Restaurante was successfully created.' }
+            format.json { render :show, status: :created, location: @restaurante }
+          else
+            format.html { render :new }
+            format.json { render json: @restaurante.errors, status: :unprocessable_entity }
+          end
+      end
     end
 
     def edit
